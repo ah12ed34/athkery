@@ -13,8 +13,9 @@ class HomeController extends GetxController {
     _categories = [];
     selects = [];
     final db = DatabaseHelper.instance;
-    _categories = await db.getCategotries();
-    _thaker = await db.getAthaker();
+    _categories = await db.getCategotries(null);
+    _thaker = await db.getAthaker(null);
+
     if (_thaker.isNotEmpty) {
       selectZ ??= 0;
     } else {
