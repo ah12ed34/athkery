@@ -145,26 +145,43 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          floatingActionButton: InkWell(
-            onLongPress: () {
-              setState(() {
-                if (controller.athker.isNotEmpty) {
-                  for (var element in controller.athker) {
-                    element.rest();
-                  }
-                }
-              });
-            },
-            child: FloatingActionButton(
-              onPressed: () {
-                if (controller.athker.isNotEmpty) {
-                  setState(() {
-                    controller.athker[controller.selectZ!].rest();
-                  });
-                }
-              },
-              backgroundColor: Colors.red,
-              child: const Icon(Icons.restart_alt),
+          floatingActionButton: SafeArea(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: InkWell(
+                    onLongPress: () {
+                      setState(() {
+                        if (controller.athker.isNotEmpty) {
+                          for (var element in controller.athker) {
+                            element.rest();
+                          }
+                        }
+                      });
+                    },
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        if (controller.athker.isNotEmpty) {
+                          setState(() {
+                            controller.athker[controller.selectZ!].rest();
+                          });
+                        }
+                      },
+                      backgroundColor: Colors.red,
+                      child: const Icon(Icons.restart_alt),
+                    ),
+                  ),
+                ),
+                Expanded(
+                    flex: 1,
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      backgroundColor: Colors.blue,
+                      child: const Icon(Icons.add),
+                    )),
+              ],
             ),
           ),
           //InkWell(child: Vac,)
